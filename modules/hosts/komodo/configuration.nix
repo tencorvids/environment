@@ -17,6 +17,7 @@
           inputs.home-manager.nixosModules.default
         ];
 
+
         networking.hostName = "komodo";
         networking.useDHCP = false;
         networking.interfaces.ens18.ipv4.addresses = [
@@ -32,6 +33,9 @@
           imports = with inputs.self.modules.homeManager; [
             base
           ];
+
+          home.file.".config/nvim".source = inputs.self + /config/nvim;
+          home.sessionVariables.EDITOR = "nvim";
         };
       }
     ];
