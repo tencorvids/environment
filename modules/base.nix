@@ -7,6 +7,7 @@
       nixpkgs_settings
       user
       network
+      ssh
     ];
   };
 
