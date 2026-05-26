@@ -11,7 +11,6 @@
         fzf
         home-manager
         jq
-        lazydocker
         lazygit
         neovim
         ripgrep

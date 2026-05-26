@@ -7,9 +7,9 @@
   flake.nixosConfigurations.komodo = inputs.nixpkgs.lib.nixosSystem {
     modules = with inputs.self.modules.nixos; [
       base
-      docker
       grub_boot
       kernel
+      virt
 
       {
         imports = [
@@ -29,7 +29,7 @@
         networking.defaultGateway = "10.10.10.1";
         networking.nameservers = [ "10.10.10.1" "1.1.1.1" "9.9.9.9" ];
 
-        home-manager.users.${config.primaryUser.username} = {
+        home-manager.users.${config.primaryUser.username} = { pkgs, ... }: {
           imports = with inputs.self.modules.homeManager; [
             base
           ];

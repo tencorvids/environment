@@ -1,5 +1,5 @@
 {
-  flake.modules.nixos.docker = {
+  flake.modules.nixos.virt = {
     virtualisation.docker = {
       enable = true;
       rootless.enable = true;
