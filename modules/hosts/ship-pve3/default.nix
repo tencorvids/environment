@@ -32,11 +32,11 @@ in
           inherit vars;
         };
 
-        networking.hostName = "ship-pve1";
+        networking.hostName = "ship-pve3";
         networking.useDHCP = false;
         networking.interfaces.ens18.ipv4.addresses = [
           {
-            address = "10.10.10.11";
+            address = "10.10.10.13";
             prefixLength = 24;
           }
         ];
