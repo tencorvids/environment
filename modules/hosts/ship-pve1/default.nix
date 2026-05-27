@@ -6,7 +6,7 @@ let
   vars = inputs.self.vars.user;
 in
 {
-  flake.nixosConfigurations.komodo = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.ship_pve1 = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = {
       inherit inputs vars;
     };
@@ -28,7 +28,7 @@ in
           inherit vars;
         };
 
-        networking.hostName = "komodo";
+        networking.hostName = "ship-pve1";
         networking.useDHCP = false;
         networking.interfaces.ens18.ipv4.addresses = [
           {
