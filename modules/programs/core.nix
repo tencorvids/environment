@@ -14,6 +14,8 @@
         lazygit
         neovim
         ripgrep
+        starship
+        tmux
       ];
       imports = with inputs.self.modules.homeManager; [
         git
