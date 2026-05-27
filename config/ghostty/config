@@ -1,0 +1,33 @@
+theme = Cyberdream
+
+shell-integration = zsh
+quit-after-last-window-closed = true
+
+font-family = "GeistMono NFM"
+font-style = Regular
+font-style-italic = Regular Italic
+font-style-bold = Bold
+font-style-bold-italic = Bold Italic
+font-size = 14
+
+unfocused-split-opacity = 0.97  
+
+background-opacity = 1.0
+
+cursor-style-blink = true
+
+clipboard-read = allow
+clipboard-write = allow
+
+macos-option-as-alt = true
+macos-titlebar-proxy-icon = hidden
+
+title = terminal 
+
+window-width = 90
+window-height = 30
+window-colorspace = display-p3
+window-padding-color = background
+window-padding-balance = true
+window-padding-x = 0
+window-padding-y = 0
