@@ -12,7 +12,7 @@
     home.file.".config/nvim".source = inputs.self + /config/nvim;
     home.file.".config/.tmux.conf".source = inputs.self + /config/tmux/tmux.conf;
     home.file.".config/starship.toml".source = inputs.self + /config/starship/starship.toml;
-    home.file.".config/.zshrc".source = inputs.self + /config/zsh/zshrc;
+    home.file.".zshrc".source = inputs.self + /config/zsh/zshrc;
     home.sessionVariables.EDITOR = "nvim";
   };
 }
