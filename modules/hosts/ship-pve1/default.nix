@@ -15,6 +15,7 @@ in
       base
       grub_boot
       kernel
+      qemu_guest
       virt
 
       ({
