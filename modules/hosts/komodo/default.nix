@@ -1,10 +1,16 @@
 {
   inputs,
-  config,
   ...
 }:
+let
+  vars = inputs.self.vars.user;
+in
 {
   flake.nixosConfigurations.komodo = inputs.nixpkgs.lib.nixosSystem {
+    specialArgs = {
+      inherit inputs vars;
+    };
+
     modules = with inputs.self.modules.nixos; [
       base
       grub_boot
@@ -14,9 +20,13 @@
       {
         imports = [
           ./_hardware-configuration.nix
+          ./_home.nix
           inputs.home-manager.nixosModules.default
         ];
 
+        home-manager.extraSpecialArgs = {
+          inherit vars;
+        };
 
         networking.hostName = "komodo";
         networking.useDHCP = false;
@@ -28,18 +38,6 @@
         ];
         networking.defaultGateway = "10.10.10.1";
         networking.nameservers = [ "10.10.10.1" "1.1.1.1" "9.9.9.9" ];
-
-        home-manager.users.${config.primaryUser.username} = { pkgs, ... }: {
-          imports = with inputs.self.modules.homeManager; [
-            base
-          ];
-
-          home.file.".config/nvim".source = inputs.self + /config/nvim;
-          home.file.".config/.tmux.conf".source = inputs.self + /config/tmux/tmux.conf;
-          home.file.".config/starship.toml".source = inputs.self + /config/starship/starship.toml;
-          home.file.".config/.zshrc".source = inputs.self + /config/zsh/zshrc;
-          home.sessionVariables.EDITOR = "nvim";
-        };
       }
     ];
   };

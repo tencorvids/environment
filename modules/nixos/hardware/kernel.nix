@@ -4,7 +4,6 @@
     {
       boot.kernelPackages = pkgs.linuxPackages_latest;
 
-      # Silent boot
       boot.consoleLogLevel = 3;
       boot.initrd.verbose = false;
       boot.kernelParams = [
