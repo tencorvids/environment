@@ -6,7 +6,7 @@ let
   vars = inputs.self.vars.user;
 in
 {
-  flake.nixosConfigurations.ship_pve1 = inputs.nixpkgs.lib.nixosSystem {
+  flake.nixosConfigurations.ship_pve3 = inputs.nixpkgs.lib.nixosSystem {
     specialArgs = {
       inherit inputs vars;
     };
