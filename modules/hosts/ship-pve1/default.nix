@@ -17,6 +17,10 @@ in
       kernel
       virt
 
+      ({
+        pkgs,
+        ...
+      }:
       {
         imports = [
           ./_hardware-configuration.nix
@@ -38,7 +42,23 @@ in
         ];
         networking.defaultGateway = "10.10.10.1";
         networking.nameservers = [ "10.10.10.1" "1.1.1.1" "9.9.9.9" ];
-      }
+
+        systemd.services.komodo-compose = {
+          description = "Komodo docker compose stack";
+          after = [ "docker.service" "network-online.target" ];
+          wants = [ "docker.service" "network-online.target" ];
+          wantedBy = [ "multi-user.target" ];
+          path = [ pkgs.docker ];
+
+          serviceConfig = {
+            Type = "oneshot";
+            RemainAfterExit = true;
+            WorkingDirectory = "${./komodo}";
+            ExecStart = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file compose.env up -d'";
+            ExecStop = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file compose.env down'";
+          };
+        };
+      })
     ];
   };
 }
