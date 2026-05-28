@@ -52,14 +52,14 @@ in
           wantedBy = [ "multi-user.target" ];
           path = [ pkgs.docker ];
 
-          unitConfig.ConditionPathExists = "/var/lib/stacks/komodo/compose.env";
+          unitConfig.ConditionPathExists = "/var/lib/stacks/komodo/.env";
 
           serviceConfig = {
             Type = "oneshot";
             RemainAfterExit = true;
             WorkingDirectory = "/home/${vars.username}/stacks/komodo";
-            ExecStart = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file /var/lib/stacks/komodo/compose.env up -d'";
-            ExecStop = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file /var/lib/stacks/komodo/compose.env down'";
+            ExecStart = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file /var/lib/stacks/komodo/.env up -d'";
+            ExecStop = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file /var/lib/stacks/komodo/.env down'";
           };
         };
       })
