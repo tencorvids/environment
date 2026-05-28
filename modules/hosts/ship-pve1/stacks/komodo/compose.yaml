@@ -48,7 +48,7 @@ services:
       - ferretdb
     ports:
       - 9120:9120
-    env_file: /var/lib/stacks/komodo/.env
+    env_file: ./compose.env
     environment:
       KOMODO_DATABASE_ADDRESS: ferretdb:27017
     volumes:
@@ -72,7 +72,7 @@ services:
     restart: unless-stopped
     depends_on:
       - core
-    env_file: /var/lib/stacks/komodo/.env
+    env_file: ./compose.env
     volumes:
       ## Attach the Core / Periphery communication keys
       - keys:/config/keys
