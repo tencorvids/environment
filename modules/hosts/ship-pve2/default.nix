@@ -54,7 +54,7 @@ in
           serviceConfig = {
             Type = "oneshot";
             RemainAfterExit = true;
-            WorkingDirectory = "${./komodo}";
+            WorkingDirectory = "${./stacks/komodo}";
             ExecStart = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file compose.env up -d'";
             ExecStop = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file compose.env down'";
           };

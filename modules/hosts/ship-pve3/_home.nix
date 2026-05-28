@@ -14,5 +14,7 @@
     home.file.".config/starship.toml".source = inputs.self + /config/starship/starship.toml;
     home.file.".zshrc".source = inputs.self + /config/zsh/zshrc;
     home.sessionVariables.EDITOR = "nvim";
+
+    home.file."stacks".source = ./stacks;
   };
 }
