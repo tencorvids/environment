@@ -52,7 +52,7 @@ in
           wantedBy = [ "multi-user.target" ];
           path = [ pkgs.docker ];
 
-          unitConfig.ConditionPathExists = "/home/${vars.username}/stacks/komodo/compose.env";
+          unitConfig.ConditionPathExists = "/var/lib/stacks/komodo/compose.env";
 
           serviceConfig = {
             Type = "oneshot";

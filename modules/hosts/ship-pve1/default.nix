@@ -47,14 +47,17 @@ in
         systemd.services.komodo-compose = {
           description = "Komodo docker compose stack";
           after = [ "docker.service" "network-online.target" ];
-          wants = [ "docker.service" "network-online.target" ];
+          wants = [ "network-online.target" ];
+          requires = [ "docker.service" ];
           wantedBy = [ "multi-user.target" ];
           path = [ pkgs.docker ];
+
+          unitConfig.ConditionPathExists = "/var/lib/stacks/komodo/compose.env";
 
           serviceConfig = {
             Type = "oneshot";
             RemainAfterExit = true;
-            WorkingDirectory = "${./stacks/komodo}";
+            WorkingDirectory = "/home/${vars.username}/stacks/komodo";
             ExecStart = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file /var/lib/stacks/komodo/compose.env up -d'";
             ExecStop = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file /var/lib/stacks/komodo/compose.env down'";
           };
