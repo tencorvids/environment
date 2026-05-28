@@ -58,8 +58,8 @@ in
             Type = "oneshot";
             RemainAfterExit = true;
             WorkingDirectory = "/home/${vars.username}/stacks/komodo";
-            ExecStart = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file compose.env up -d'";
-            ExecStop = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file compose.env down'";
+            ExecStart = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file /var/lib/stacks/komodo/compose.env up -d'";
+            ExecStop = "${pkgs.bash}/bin/bash -lc 'docker compose -f compose.yaml --env-file /var/lib/stacks/komodo/compose.env down'";
           };
         };
       })
