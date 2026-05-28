@@ -17,7 +17,7 @@ services:
     volumes:
       - /srv/docker/appdata/gluetun:/gluetun
     env_file:
-      - .env
+      - /var/lib/stacks/torrent/.env
     environment:
       - TZ=${TZ}
       - VPN_SERVICE_PROVIDER=${VPN_SERVICE_PROVIDER}
@@ -37,7 +37,7 @@ services:
       - /srv/docker/appdata/qbittorrent:/config
       - /srv/docker/data/torrents:/downloads
     env_file:
-      - .env
+      - /var/lib/stacks/torrent/.env
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -55,7 +55,7 @@ services:
     volumes:
       - /srv/docker/appdata/prowlarr:/config
     env_file:
-      - .env
+      - /var/lib/stacks/torrent/.env
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
@@ -73,7 +73,7 @@ services:
       - /srv/docker/data/media/movies:/movies
       - /srv/docker/data/torrents:/downloads
     env_file:
-      - .env
+      - /var/lib/stacks/torrent/.env
     environment:
       - PUID=${PUID}
       - PGID=${PGID}
